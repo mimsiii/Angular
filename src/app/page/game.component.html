@@ -1,0 +1,33 @@
+<div class="list-attempts">
+    <button (click)="start()" [disabled]="gameStarted==true">Start</button>
+</div>
+
+<div class="list-attempts" *ngIf="showInput">
+    <label for="guess">Make your guess: </label>
+    <input class="form-control" id="guess" name="guess" [(ngModel)]="guess"
+    required pattern="[1-9]{4}" #guessField="ngModel"/>
+    <button (click)="check()" [disabled]="win==true">Check</button>
+</div>
+
+<div class="list-attempts" *ngIf="attemptArr.length > 0">
+  <label>Your attempts:</label>
+  <table>
+    <thead>
+      <tr>
+        <td>Attempt</td>
+        <td>Your number</td>
+        <td>Bulls</td>
+        <td>Cows</td>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let attempt of attemptArr; let i = index">
+        <td>{{i + 1}}</td>
+        <td>{{attempt.guess}}</td>
+        <td>{{attempt.bulls}}</td>
+        <td>{{attempt.cows}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <h1 *ngIf="this.win==true">You won!</h1>
+</div>
