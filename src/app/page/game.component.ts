@@ -33,9 +33,10 @@ export class GameComponent{
     }
 
     start(){
-        if(this.win == true){
+        if(this.win === true){
             this.win = false;
         }
+      
         this.gameStarted = true;
         
         this.attemptArr = [];
@@ -63,7 +64,6 @@ export class GameComponent{
             num /= 10;
         }
         
-        console.log(this.answer)
         let numsChecked: number[] = [];
 
         guess.forEach((value, index) => {
@@ -83,7 +83,6 @@ export class GameComponent{
         });
 
         this.saveAttempt();
-        console.log()
 
         if(this.checkRes.bulls === 4){
             this.win = true;
@@ -94,7 +93,5 @@ export class GameComponent{
         numsChecked = [];
         this.checkRes.bulls = 0;
         this.checkRes.cows = 0;
-
-        console.log(guess);
     }
 }
